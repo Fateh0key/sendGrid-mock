@@ -34,8 +34,8 @@ const rateLimitConfiguration = {
 };
 
 const app = setupExpressApp(
-  mailHandler, 
-  apiAuthentication, 
+  mailHandler,
+  apiAuthentication,
   process.env.API_KEY,
   rateLimitConfiguration,
 );
@@ -47,7 +47,7 @@ if (enableSsl) {
   logger.info('Starting send-grid mock with letsencrypt.org integration (use https)!');
 
   const sslRateLimitConfiguration = {
-    enabled: process.env.SSL_RATE_LIMIT_ENABLED === 'true', 
+    enabled: process.env.SSL_RATE_LIMIT_ENABLED === 'true',
     windowInMs: process.env.SSL_RATE_LIMIT_WINDOW_IN_MS ? process.env.SSL_RATE_LIMIT_WINDOW_IN_MS : 60000,
     maxRequests: process.env.SSL_RATE_LIMIT_MAX_REQUESTS ? process.env.SSL_RATE_LIMIT_MAX_REQUESTS : 100,
   };
@@ -55,7 +55,7 @@ if (enableSsl) {
   asHttpsServer(app, sslRateLimitConfiguration);
 } else {
 
-  const serverPort = 3000;
+  const serverPort = 7000;
   app.listen(serverPort);
 
   logger.info(`Started sendgrid-mock on port ${serverPort}!`);

@@ -37,15 +37,15 @@ COPY package*.json ./
 RUN npm i --only=production
 # Copy transpiled js from builder stage into the final image
 COPY --from=builder /app/dist ./dist
-# Copy src/server into final image 
+# Copy src/server into final image
 COPY src/server ./src/server
 
 # port 80 is mandatory for webroot challenge
 # port 443 is mandatory for https
-# port 3000 default port for UI and server in development mode
+# port 7000 default port for UI and server in development mode
 EXPOSE 80
 EXPOSE 443
-EXPOSE 3000
+EXPOSE 7000
 
 # Set all environment variables
 ENV DOCKER_BUILD="false"
